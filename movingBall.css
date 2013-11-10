@@ -1,0 +1,77 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #00FF00;
+    background-size: 100% auto;
+    height: 100%;
+    width: 100%;
+}
+
+#fullscreenButton {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: #ff0000;
+}
+
+#chrono
+{
+    position: absolute;
+    text-align: center;
+    height: 10%;
+    background-color: black;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 3em;
+    color: red;
+    padding-top:0.5em;
+    width: 100%;
+    border: 4px solid red;
+}
+
+#buttons{
+    position: absolute;
+    text-align: center;
+    height: 10%;
+    background-color: black;
+    width:100%;
+    bottom:0.1%;
+    border: 4px solid red;
+}
+
+#buttons li
+{
+    display: inline;
+    list-style-type: none;
+    text-align: center;
+    padding:2em;
+}
+
+#start
+{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 3em;
+}
+
+#pause
+{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 3em;
+}
+
+#reset
+{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 3em;
+}
+
+#surface
+{
+    width:100%;
+    top:10%;
+    position:absolute;
+}
+
