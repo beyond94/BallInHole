@@ -6,18 +6,20 @@ var mouseDownInsideball;
 var touchDownInsideball;
 var movementTimer;
 var lastMouse, lastOrientation, lastTouch;
-var startbutton = document.getElementById('start');
-var pausebutton = document.getElementById('pause');
-var stopbutton = document.getElementById('stop');
+var startbutton, pausebutton, stopbutton;
 var starttime = 0;
+var started = 0;
                             
 // Initialisation on opening of the window
 function init() {
 	lastOrientation = {};
 	window.addEventListener('resize', doLayout, false);
+    startbutton = document.getElementById('start');
+    pausebutton = document.getElementById('pause');
+    stopbutton = document.getElementById('stop');
     startbutton.addEventListener('click', start, false);
     pausebutton.addEventListener('click', pause, false);
-    stopbutton.addEventListener('click', stop, false);
+    stopbutton.addEventListener('click', reset, false);
 	document.body.addEventListener('mousemove', onMouseMove, false);
 	document.body.addEventListener('mousedown', onMouseDown, false);
 	document.body.addEventListener('mouseup', onMouseUp, false);
@@ -32,6 +34,29 @@ function init() {
 	doLayout(document);
 }
 
+function addListeners() {
+
+    document.addEventListener('mousemove', onMouseMove, false);
+    document.addEventListener('mousedown', onMouseDown, false);
+    document.addEventListener('mouseup', onMouseUp, false);
+    document.addEventListener('touchmove', onTouchMove, false);
+    document.addEventListener('touchstart', onTouchDown, false);
+    document.addEventListener('touchend', onTouchUp, false);
+    window.addEventListener('deviceorientation', deviceOrientationTest, false);
+
+}
+
+function removeListeners() {
+    document.removeEventListener('mousemove', onMouseMove, false);
+    document.removeEventListener('mousedown', onMouseDown, false);
+    document.removeEventListener('mouseup', onMouseUp, false);
+    document.removeEventListener('touchmove', onTouchMove, false);
+    document.removeEventListener('touchstart', onTouchDown, false);
+    document.removeEventListener('touchend', onTouchUp, false);
+    window.removeEventListener('deviceorientation', onDeviceOrientationChange, false);
+    clearInterval(movementTimer);
+}
+
 // Does the gyroscope or accelerometer actually work?
 function deviceOrientationTest(event) {
 	window.removeEventListener('deviceorientation', deviceOrientationTest);
@@ -40,27 +65,6 @@ function deviceOrientationTest(event) {
 		movementTimer = setInterval(onRenderUpdate, 10); 
 	}
 }
-
-function start() {
-    if(starttime == 0){
-        starttime = 1;
-        chrono();
-    }
-}
-function pause() {
-    if(starttime == 1){
-        starttime = 0;
-    }
-}
-function reset()
-{
-    seconds = 0;
-    minutes = 0;
-    starttime = 0;
-    document.getElementById('chrono').innerHTML = '0' + minutes + ':0'+ seconds;
-    init();
-}
-
 
 
 function doLayout(event) {
@@ -156,6 +160,7 @@ function moveBall(xDelta, yDelta) {
 	ball.y += yDelta;
 	renderBall();
     detectWonState();
+    doLayout(document);
     }
 }
 
@@ -238,4 +243,28 @@ function onTouchUp(event) {
 function onDeviceOrientationChange(event) {
 	lastOrientation.gamma = event.gamma;
 	lastOrientation.beta = event.beta;
+}
+
+function start() {
+    if(starttime == 0){
+        addListeners();
+        starttime = 1;
+        chrono();
+    }
+    
+}
+function pause() {
+    if(starttime == 1){
+        removeListeners();
+        starttime = 0;
+    }
+}
+function reset()
+{
+    removeListeners();
+    seconds = 0;
+    minutes = 0;
+    starttime = 0;
+    document.getElementById('chrono').innerHTML = '0' + minutes + ':0'+ seconds;
+    init();
 }
