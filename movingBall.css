@@ -17,7 +17,6 @@ body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-size: 2em;
     color: red;
-    padding-top:0.5em;
     width: 100%;
     border: 4px solid red;
 }
@@ -34,7 +33,7 @@ body {
 
 button
 {
-    height: 2.5em;
+    height: 2em;
     width: 30%;
     text-align: center;
 }

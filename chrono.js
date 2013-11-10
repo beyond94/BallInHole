@@ -1,6 +1,7 @@
     var seconds = 0;
     var minutes = 0;
-    var starttime = 0;
+
+
 
     function chrono()
     {
@@ -31,22 +32,3 @@
         }
     }
 
-    function start() {
-        if(starttime == 0){
-            starttime = 1;
-            chrono();
-        }
-    }
-    function pause() {
-        if(starttime == 1){
-            starttime = 0;
-        }
-    }
-    function reset()
-    {
-        seconds = 0;
-        minutes = 0;
-        starttime = 0;
-        document.getElementById('chrono').innerHTML = '0' + minutes + ':0'+ seconds;
-        init();
-    }

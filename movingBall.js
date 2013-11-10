@@ -6,11 +6,18 @@ var mouseDownInsideball;
 var touchDownInsideball;
 var movementTimer;
 var lastMouse, lastOrientation, lastTouch;
+var startbutton = document.getElementById('start');
+var pausebutton = document.getElementById('pause');
+var stopbutton = document.getElementById('stop');
+var starttime = 0;
                             
 // Initialisation on opening of the window
 function init() {
 	lastOrientation = {};
 	window.addEventListener('resize', doLayout, false);
+    startbutton.addEventListener('click', start, false);
+    pausebutton.addEventListener('click', pause, false);
+    stopbutton.addEventListener('click', stop, false);
 	document.body.addEventListener('mousemove', onMouseMove, false);
 	document.body.addEventListener('mousedown', onMouseDown, false);
 	document.body.addEventListener('mouseup', onMouseUp, false);
@@ -32,6 +39,26 @@ function deviceOrientationTest(event) {
 		window.addEventListener('deviceorientation', onDeviceOrientationChange, false);
 		movementTimer = setInterval(onRenderUpdate, 10); 
 	}
+}
+
+function start() {
+    if(starttime == 0){
+        starttime = 1;
+        chrono();
+    }
+}
+function pause() {
+    if(starttime == 1){
+        starttime = 0;
+    }
+}
+function reset()
+{
+    seconds = 0;
+    minutes = 0;
+    starttime = 0;
+    document.getElementById('chrono').innerHTML = '0' + minutes + ':0'+ seconds;
+    init();
 }
 
 
