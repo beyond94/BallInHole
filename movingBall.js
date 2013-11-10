@@ -8,8 +8,7 @@ var movementTimer;
 var lastMouse, lastOrientation, lastTouch;
 var startbutton, pausebutton, stopbutton;
 var starttime = 0;
-var started = 0;
-                            
+
 // Initialisation on opening of the window
 function init() {
 	lastOrientation = {};
@@ -85,6 +84,7 @@ function doLayout(event) {
                 x:xrand,
                 y:yrand,
                 color:'rgba(255,255,255,255)'};
+
     renderHole();
 	renderBall();
 
@@ -92,9 +92,10 @@ function doLayout(event) {
 	
 function renderBall() {
 
-	var context = surface.getContext('2d');
+    var surface = document.getElementById('surface');
+    var context = surface.getContext('2d');
 
-	context.beginPath();
+    context.beginPath();
 	context.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, false);
 	context.fillStyle = ball.color;
 	context.fill();
@@ -155,10 +156,31 @@ function onRenderUpdate(event) {
 
 function moveBall(xDelta, yDelta) {
     if(starttime == 1){
+        var xtemp = ball.x +xDelta;
+        var ytemp = ball.y +yDelta;
+        if(xtemp > ball.radius && xtemp < (winW - ball.radius)) {
+            ball.x+= xDelta;
+        }
+        else if(xtemp <= ball.radius){
+            ball.x = ball.radius;
+        }
+        else if(xtemp >= winW - ball.radius){
+            ball.x = winW - ball.radius;
+        }
 
-	ball.x += xDelta;
-	ball.y += yDelta;
+        if(ytemp > ball.radius && ytemp < (winH - ball.radius)) {
+            ball.y+= yDelta;
+        }
+        else if(ytemp <= ball.radius){
+            ball.y = ball.radius;
+        }
+        else if(ytemp >= winH - ball.radius){
+            ball.y = winH - ball.radius;
+        }
+
+        renderHole();
 	renderBall();
+
     detectWonState();
     }
 }
