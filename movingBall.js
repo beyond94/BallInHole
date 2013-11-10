@@ -160,7 +160,6 @@ function moveBall(xDelta, yDelta) {
 	ball.y += yDelta;
 	renderBall();
     detectWonState();
-    doLayout(document);
     }
 }
 
@@ -251,7 +250,7 @@ function start() {
         starttime = 1;
         chrono();
     }
-    
+
 }
 function pause() {
     if(starttime == 1){
