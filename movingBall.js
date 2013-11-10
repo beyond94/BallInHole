@@ -80,7 +80,7 @@ function doLayout(event) {
 				color:'rgba(255, 0, 0, 255)'};
     var xrand = Math.floor((Math.random()*(winW-15))+15);
     var yrand = Math.floor((Math.random()*(winH-maxheight-15))+maxheight);
-    hole = {    radius:radius+3,
+    hole = {    radius:radius+12,
                 x:xrand,
                 y:yrand,
                 color:'rgba(255,255,255,255)'};
@@ -119,8 +119,10 @@ function renderHole() {
 }
 
 function detectWonState(){
-    if(ball.x >= hole.x && ball.x <= hole.x){
-        if(ball.y >= hole.y && ball.y <= hole.y){
+    if(ball.x + ball.radius < hole.x + hole.radius
+        && ball.x - ball.radius > hole.x - hole.radius){
+        if(ball.y + ball.radius < hole.y + hole.radius
+            && ball.y - ball.radius > hole.y - hole.radius){
             alert("Congratulations, you won the game in " + document.getElementById('chrono').innerHTML + " minutes!");
             init();
             reset();
