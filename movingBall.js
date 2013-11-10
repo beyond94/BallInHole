@@ -43,14 +43,14 @@ function doLayout(event) {
 	var surface = document.getElementById('surface');
 	surface.width = winW;
 	surface.height = winH;
-	var radius = 40;
+	var radius = 7;
 	ball = {	radius:radius,
 				x:Math.round(winW/2),
 				y:Math.round(winH/2),
 				color:'rgba(255, 0, 0, 255)'};
-    var xrand = Math.floor((Math.random()*(winW-102))+50);
-    var yrand = Math.floor((Math.random()*(winH-maxheight-102))+maxheight);
-    hole = {    radius:radius+10,
+    var xrand = Math.floor((Math.random()*(winW-15))+15);
+    var yrand = Math.floor((Math.random()*(winH-maxheight-15))+maxheight);
+    hole = {    radius:radius+3,
                 x:xrand,
                 y:yrand,
                 color:'rgba(255,255,255,255)'};

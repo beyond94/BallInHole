@@ -8,24 +8,14 @@ body {
     width: 100%;
 }
 
-#fullscreenButton {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-size: 22px;
-    color: #ff0000;
-}
-
 #chrono
 {
     position: absolute;
     text-align: center;
-    height: 10%;
+    height: 5%;
     background-color: black;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 3em;
+    font-size: 2em;
     color: red;
     padding-top:0.5em;
     width: 100%;
@@ -35,43 +25,28 @@ body {
 #buttons{
     position: absolute;
     text-align: center;
-    height: 10%;
+    height: 5%;
     background-color: black;
     width:100%;
-    bottom:0.1%;
+    bottom:0;
     border: 4px solid red;
 }
 
 #buttons li
 {
+    height: 2.5em;
+    width: 32%;
     display: inline;
     list-style-type: none;
     text-align: center;
     padding:2em;
-}
-
-#start
-{
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 3em;
-}
-
-#pause
-{
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 3em;
-}
-
-#reset
-{
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 #surface
 {
     width:100%;
     top:10%;
-    position:absolute;
+    display:block;
 }
 
