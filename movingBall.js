@@ -6,7 +6,7 @@ var mouseDownInsideball;
 var touchDownInsideball;
 var movementTimer;
 var lastMouse, lastOrientation, lastTouch;
-var startbutton, pausebutton, stopbutton;
+var startbutton, pausebutton, resetbutton;
 var starttime = 0;
 
 // Initialisation on opening of the window
@@ -15,10 +15,10 @@ function init() {
 	window.addEventListener('resize', doLayout, false);
     startbutton = document.getElementById('start');
     pausebutton = document.getElementById('pause');
-    stopbutton = document.getElementById('stop');
+    resetbutton = document.getElementById('reset');
     startbutton.addEventListener('click', start, false);
     pausebutton.addEventListener('click', pause, false);
-    stopbutton.addEventListener('click', reset, false);
+    resetbutton.addEventListener('click', reset, false);
 	document.body.addEventListener('mousemove', onMouseMove, false);
 	document.body.addEventListener('mousedown', onMouseDown, false);
 	document.body.addEventListener('mouseup', onMouseUp, false);
