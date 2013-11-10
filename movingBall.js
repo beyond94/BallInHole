@@ -38,8 +38,8 @@ function deviceOrientationTest(event) {
 
 function doLayout(event) {
 	winW = window.innerWidth;
-	winH = window.innerHeight-(window.innerHeight*20/100);
-    var maxheight = window.innerHeight*10/100;
+	winH = window.innerHeight-(window.innerHeight*10/100);
+    var maxheight = window.innerHeight*5/100;
 	var surface = document.getElementById('surface');
 	surface.width = winW;
 	surface.height = winH;
