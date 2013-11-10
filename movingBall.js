@@ -80,7 +80,7 @@ function doLayout(event) {
 				color:'rgba(255, 0, 0, 255)'};
     var xrand = Math.floor((Math.random()*(winW-15))+15);
     var yrand = Math.floor((Math.random()*(winH-maxheight-15))+maxheight);
-    hole = {    radius:radius+10,
+    hole = {    radius:radius+5,
                 x:xrand,
                 y:yrand,
                 color:'rgba(255,255,255,255)'};
